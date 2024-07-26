@@ -1,9 +1,10 @@
-import { UserProps } from "../types/user";
+import { UserProps,Repo } from "../types/user";
 import { MdLocationPin } from "react-icons/md";
+import RepoCard from "./RepoCard"; // Importe o componente RepoCard
 
 type RepoProps = {
-  repos: any[]
-}
+  repos: Repo[];
+};
 
 const User = ({
   login,
@@ -14,20 +15,22 @@ const User = ({
   bio,
   repos
 }: UserProps & RepoProps) => {
+
+
   return (
     <section className="flex flex-col w-full items-center">
-      <div className=" w-[90vw] flex items-center pl-10 mt-14 pb-16 gap-14 border-b-2">
+      <div className="text-white w-[85vw] flex items-center pl-10 mt-14 pb-16 gap-14 border-b-2">
         <img
-          className="w-[200px] h-[200px] rounded-full  "
+          className="w-[200px] h-[200px] rounded-full"
           src={avatar_url}
           alt={login}
         />
         <div className="flex flex-col gap-[20px]">
           <h2 className="text-3xl">{login}</h2>
           <div className="flex gap-10 text-xl">
-            <p>10 Repositórios</p>
-            <p> {`${followers} Seguidores`}</p>
-            <p> {`${following} Seguindo`}</p>
+            <p>{`${repos.length} Repositórios`}</p>
+            <p>{`${followers} Seguidores`}</p>
+            <p>{`${following} Seguindo`}</p>
           </div>
           <div>
             <p className="text-xl max-w-[600px]">{bio}</p>
@@ -41,13 +44,10 @@ const User = ({
         </div>
       </div>
 
-      <div>
-          {repos.map((e) => (
-            <div>
-              <p>{e.name}</p>
-              <p>{e.language}</p>
-            </div>
-          ))}
+      <div className="w-[85vw] grid grid-cols-3 place-items-center mt-12 gap-12">
+        {repos.map((repo) => (
+          <RepoCard key={repo.id} repo={repo} login={login} />
+        ))}
       </div>
     </section>
   );

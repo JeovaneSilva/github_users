@@ -6,3 +6,10 @@ export type UserProps = {
   followers: number;
   following: number;
 };
+
+export type Repo = {
+  name: string;
+  description: string;
+  language: string;
+  id: number;
+};

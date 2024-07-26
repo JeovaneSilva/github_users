@@ -30,7 +30,7 @@ const Search = ({ loadUser }: SearchProps) => {
         <button className="p-[0.6rem] rounded-[3px] border-none text-[#2b3566] bg-[#0e1129] pointer" onClick={() => {loadUser(userName)
             setUserName('')
         }}>
-          <BsSearch />
+          <BsSearch className="fill-white" />
         </button>
       </div>
     </div>

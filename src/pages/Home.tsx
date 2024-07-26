@@ -1,4 +1,4 @@
-import { UserProps } from "../types/user";
+import { UserProps,Repo } from "../types/user";
 import Search from "../components/Search";
 import User from "../components/User";
 import Error from "../components/Error";
@@ -6,8 +6,9 @@ import { useState } from "react";
 
 const Home = () => {
   const [user, setUser] = useState<UserProps | null>(null);
-  const [repo, setRepo] = useState([]);
+  const [repo, setRepo] = useState<Repo[]>([]);
   const [error, setError] = useState(false);
+
 
   const loadUser = async (username: string) => {
     setError(false)
@@ -39,10 +40,14 @@ const Home = () => {
       bio,
     };
 
+    const repos: Repo[] = Array.isArray(dataRepo) ? dataRepo : [];
+
     setUser(userData);
-    setRepo(dataRepo);
+    setRepo(repos);
+
   };
 
+  
   return (
     <div>
       <Search loadUser={loadUser} />
