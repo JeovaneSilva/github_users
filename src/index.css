@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 
+#024059
+#026873
+#04BF8A
+#025940
+#03A64A
+*/
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+    color: white;
+}  
+
+body{
+    background-color: #024059;
+}
+
+
+a{
+    text-decoration: none;
+}
