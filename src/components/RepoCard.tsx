@@ -38,10 +38,11 @@ const RepoCard = ({ repo, login }: RepoCardProps) => {
       return `https://cdn.simpleicons.org/${language}`;
     }
   };
+  
 
-  const languageKeys = Object.keys(languages);
-  const languagesToShow = languageKeys.slice(0, 4);
-  const remainingLanguagesCount = languageKeys.length - languagesToShow.length;
+  const languagensKeys = Object.keys(languages);
+  const languagensAmostra = languagensKeys.slice(0, 4);
+  const linguagensRes = languagensKeys.length - languagensAmostra.length;
 
   return (
     <div
@@ -56,7 +57,7 @@ const RepoCard = ({ repo, login }: RepoCardProps) => {
       </p>
       <div className="w-[90%] flex items-center justify-between">
         <div className="flex justify-center items-center gap-[2px] sm:gap-[6px] ">
-          {languagesToShow.map((lang) => (
+          {languagensAmostra.map((lang) => (
             <img
               className="w-[16px] h-[16px] sm:w-[35px] sm:h-[35px]"
               key={lang}
@@ -64,9 +65,9 @@ const RepoCard = ({ repo, login }: RepoCardProps) => {
               alt={`${lang} Icon`}
             />
           ))}
-          {remainingLanguagesCount > 0 && (
+          {linguagensRes > 0 && (
             <span className="text-[8px] w-5 h-5 font-semibold border border-black flex items-center justify-center rounded-full p-2 ml-1 sm:text-sm sm:w-10 sm:h-10 sm:border-2">
-              +{remainingLanguagesCount}
+              +{linguagensRes}
             </span>
           )}
         </div>
