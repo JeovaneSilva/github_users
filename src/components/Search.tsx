@@ -20,7 +20,7 @@ const Search = ({ loadUser }: SearchProps) => {
     <div className=" p-6 rounded-2xl flex flex-col justify-center items-center gap-4">
       <div className="flex gap-2">
         <input
-          className="p-[0.6rem] w-[200px] h-[35px] rounded-[3px] border-none text-[#2b3566] sm:w-auto sm:h-auto "
+          className="p-[0.6rem] w-[170px] h-[35px] rounded-[3px] border-none text-[#2b3566] sm:w-auto sm:h-auto "
           type="text"
           placeholder="Nome do usuário"
           onChange={(e) => setUserName(e.target.value)}
