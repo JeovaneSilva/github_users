@@ -44,8 +44,8 @@ const User = ({
         </div>
       </div>
 
-      <div className="w-[85vw] grid grid-cols-3 place-items-center mt-12 gap-12">
-        {repos.map((repo) => (
+      <div className="w-[85vw] grid grid-cols-3 place-items-center my-12 gap-12">
+        {repos.filter(e => (e.name != login)).map((repo) => (
           <RepoCard key={repo.id} repo={repo} login={login} />
         ))}
       </div>

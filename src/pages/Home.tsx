@@ -9,28 +9,41 @@ const Home = () => {
   const [repo, setRepo] = useState<Repo[]>([]);
   const [error, setError] = useState(false);
 
+  console.log(import.meta.env.VITE_GITUB_TOKEN);
+  
+
 
   const loadUser = async (username: string) => {
-    setError(false)
-    setUser(null)
-
-    const res = await fetch(`https://api.github.com/users/${username}`);
-    const resRepo = await fetch(`https://api.github.com/users/${username}/repos`)
-
+    const token = import.meta.env.VITE_GITUB_TOKEN;
+    
+    setError(false);
+    setUser(null);
+  
+    const res = await fetch(`https://api.github.com/users/${username}`, {
+      headers: {
+        Authorization: `token ${token}`
+      }
+    });
+    
+    const resRepo = await fetch(`https://api.github.com/users/${username}/repos`, {
+      headers: {
+        Authorization: `token ${token}`
+      }
+    });
+  
     const data = await res.json();
-    const dataRepo = await resRepo.json()
-
-    if(res.status === 404){
-        setError(true);
-        return;
+    const dataRepo = await resRepo.json();
+  
+    if (res.status === 404) {
+      setError(true);
+      return;
     }
-
+  
     console.log(data);
     console.log(dataRepo);
-    
-
+  
     const { avatar_url, login, location, followers, following, bio } = data;
-
+  
     const userData: UserProps = {
       avatar_url,
       login,
@@ -39,12 +52,11 @@ const Home = () => {
       following,
       bio,
     };
-
+  
     const repos: Repo[] = Array.isArray(dataRepo) ? dataRepo : [];
-
+  
     setUser(userData);
     setRepo(repos);
-
   };
 
   

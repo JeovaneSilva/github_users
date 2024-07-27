@@ -27,7 +27,7 @@ const Search = ({ loadUser }: SearchProps) => {
           value={userName}
           onKeyDown={handleKeyDown}
         />
-        <button className="p-[0.6rem] rounded-[3px] border-none text-[#2b3566] bg-[#0e1129] pointer" onClick={() => {loadUser(userName)
+        <button className="w-10 flex justify-center items-center p-[0.6rem] rounded-[3px] border-none text-[#2b3566] bg-[#0e1129] pointer" onClick={() => {loadUser(userName)
             setUserName('')
         }}>
           <BsSearch className="fill-white" />

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Repo } from "../types/user";
+import { FaArrowRight } from "react-icons/fa6";
 
 type RepoCardProps = {
   repo: Repo;
@@ -11,8 +12,15 @@ const RepoCard = ({ repo, login }: RepoCardProps) => {
 
   useEffect(() => {
     const fetchLanguages = async () => {
+      const token = import.meta.env.VITE_GITUB_TOKEN;
+
       const res = await fetch(
-        `https://api.github.com/repos/${login}/${repo.name}/languages`
+        `https://api.github.com/repos/${login}/${repo.name}/languages`,
+        {
+          headers: {
+            Authorization: `token ${token}`,
+          },
+        }
       );
       const data = await res.json();
       setLanguages(data);
@@ -34,25 +42,34 @@ const RepoCard = ({ repo, login }: RepoCardProps) => {
   return (
     <div
       key={repo.id}
-      className="w-[350px] h-[360px] flex flex-col items-center justify-around bg-white rounded-[15px]"
+      className="w-[370px] h-[370px] flex flex-col items-center justify-around bg-white rounded-[15px]"
     >
       <h3 className="text-xl font-bold">{repo.name}</h3>
       <p className="max-w-[300px] text-center font-semibold opacity-[.7]">
-        {repo.description}
+        {repo.description
+          ? repo.description
+          : "Este repositório não possui descrição."}
       </p>
-      <div className="flex gap-10 items-center ">
-        <div className="flex">
+      <div className="w-[85%] flex gap-10 items-center justify-between">
+        <div className="flex gap-[6px] ">
           {Object.keys(languages).map((lang) => (
             <img
-            key={lang}
-              height="32"
-              width="32"
+              key={lang}
+              height="38"
+              width="38"
               src={getIconSrc(lang)}
               alt={`${repo.language} Icon`}
             />
           ))}
         </div>
-        <button className="">ver projeto</button>
+        <a
+          className="w-20 bg-[#03A64A] p-2 flex items-center justify-center rounded-[15px]"
+          href={`https://github.com/${login}/${repo.name}`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <FaArrowRight className="text-2xl" />
+        </a>
       </div>
     </div>
   );
