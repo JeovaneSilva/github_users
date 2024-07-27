@@ -39,6 +39,10 @@ const RepoCard = ({ repo, login }: RepoCardProps) => {
     }
   };
 
+  const languageKeys = Object.keys(languages);
+  const languagesToShow = languageKeys.slice(0, 4);
+  const remainingLanguagesCount = languageKeys.length - languagesToShow.length;
+
   return (
     <div
       key={repo.id}
@@ -50,19 +54,24 @@ const RepoCard = ({ repo, login }: RepoCardProps) => {
           ? repo.description
           : "Este repositório não possui descrição."}
       </p>
-      <div className="w-[85%] flex items-center justify-between">
-        <div className="flex gap-[4px] sm:gap-[6px] ">
-          {Object.keys(languages).map((lang) => (
+      <div className="w-[90%] flex items-center justify-between">
+        <div className="flex justify-center items-center gap-[2px] sm:gap-[6px] ">
+          {languagesToShow.map((lang) => (
             <img
-            className="w-[20px] h-[20px] sm:w-[38px] sm:h-[38px]"
+              className="w-[16px] h-[16px] sm:w-[35px] sm:h-[35px]"
               key={lang}
               src={getIconSrc(lang)}
-              alt={`${repo.language} Icon`}
+              alt={`${lang} Icon`}
             />
           ))}
+          {remainingLanguagesCount > 0 && (
+            <span className="text-[8px] w-5 h-5 font-semibold border border-black flex items-center justify-center rounded-full p-2 ml-1 sm:text-sm sm:w-10 sm:h-10 sm:border-2">
+              +{remainingLanguagesCount}
+            </span>
+          )}
         </div>
         <a
-          className="w-10 h-6 bg-[#03A64A] p-2 flex items-center justify-center rounded-[15px] sm:w-20 sm:h-auto"
+          className="w-8 h-5 bg-[#03A64A] p-2 flex items-center justify-center rounded-[15px] sm:w-20 sm:h-auto"
           href={`https://github.com/${login}/${repo.name}`}
           target="_blank"
           rel="noopener noreferrer"
