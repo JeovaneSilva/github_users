@@ -42,7 +42,7 @@ const RepoCard = ({ repo, login }: RepoCardProps) => {
   return (
     <div
       key={repo.id}
-      className="w-[190px] h-[200px] flex flex-col items-center justify-around bg-white rounded-[15px] sm:w-[370px] sm:h-[370px]"
+      className="w-[150px] h-[180px] flex flex-col items-center justify-around bg-white rounded-[15px] sm:w-[370px] sm:h-[370px]"
     >
       <h3 className="text-[10px] font-bold sm:text-xl">{repo.name}</h3>
       <p className="max-w-[150px] text-[10px] text-center font-semibold opacity-[.7] sm:text-xl sm:max-w-[300px]">
