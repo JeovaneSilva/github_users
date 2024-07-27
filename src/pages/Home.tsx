@@ -9,10 +9,6 @@ const Home = () => {
   const [repo, setRepo] = useState<Repo[]>([]);
   const [error, setError] = useState(false);
 
-  console.log(import.meta.env.VITE_GITUB_TOKEN);
-  
-
-
   const loadUser = async (username: string) => {
     const token = import.meta.env.VITE_GITUB_TOKEN;
     

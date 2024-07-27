@@ -20,14 +20,14 @@ const Search = ({ loadUser }: SearchProps) => {
     <div className=" p-6 rounded-2xl flex flex-col justify-center items-center gap-4">
       <div className="flex gap-2">
         <input
-          className="p-[0.6rem] rounded-[3px] border-none text-[#2b3566]"
+          className="p-[0.6rem] w-[200px] h-[35px] rounded-[3px] border-none text-[#2b3566] sm:w-auto sm:h-auto "
           type="text"
-          placeholder="Digite o nome do usuario"
+          placeholder="Nome do usuário"
           onChange={(e) => setUserName(e.target.value)}
           value={userName}
           onKeyDown={handleKeyDown}
         />
-        <button className="w-10 flex justify-center items-center p-[0.6rem] rounded-[3px] border-none text-[#2b3566] bg-[#0e1129] pointer" onClick={() => {loadUser(userName)
+        <button className="w-10 h-[36px] flex justify-center items-center p-[0.6rem] rounded-[3px] border-none text-[#2b3566] bg-[#0e1129] pointer" onClick={() => {loadUser(userName)
             setUserName('')
         }}>
           <BsSearch className="fill-white" />

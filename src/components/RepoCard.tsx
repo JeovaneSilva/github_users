@@ -42,10 +42,10 @@ const RepoCard = ({ repo, login }: RepoCardProps) => {
   return (
     <div
       key={repo.id}
-      className="w-[370px] h-[370px] flex flex-col items-center justify-around bg-white rounded-[15px]"
+      className="w-[170px] h-[200px] flex flex-col items-center justify-around bg-white rounded-[15px] sm:w-[370px] sm:h-[370px]"
     >
-      <h3 className="text-xl font-bold">{repo.name}</h3>
-      <p className="max-w-[300px] text-center font-semibold opacity-[.7]">
+      <h3 className="text-[10px] font-bold sm:text-xl">{repo.name}</h3>
+      <p className="max-w-[150px] text-[10px] text-center font-semibold opacity-[.7] sm:text-xl sm:max-w-[300px]">
         {repo.description
           ? repo.description
           : "Este repositório não possui descrição."}
@@ -54,21 +54,20 @@ const RepoCard = ({ repo, login }: RepoCardProps) => {
         <div className="flex gap-[6px] ">
           {Object.keys(languages).map((lang) => (
             <img
+            className="w-[15px] h-[15px] sm:w-[38px] sm:h-[38px]"
               key={lang}
-              height="38"
-              width="38"
               src={getIconSrc(lang)}
               alt={`${repo.language} Icon`}
             />
           ))}
         </div>
         <a
-          className="w-20 bg-[#03A64A] p-2 flex items-center justify-center rounded-[15px]"
+          className="w-12 bg-[#03A64A] p-2 flex items-center justify-center rounded-[15px] sm:w-20"
           href={`https://github.com/${login}/${repo.name}`}
           target="_blank"
           rel="noopener noreferrer"
         >
-          <FaArrowRight className="text-2xl" />
+          <FaArrowRight className="text-xs sm:text-2xl" />
         </a>
       </div>
     </div>
