@@ -19,21 +19,21 @@ const User = ({
 
   return (
     <section className="flex flex-col w-full items-center">
-      <div className="text-white w-[85vw] flex items-center mt-6 pb-10 gap-5 border-b-2 sm:gap-14 sm:pl-10 sm:mt-14 sm:pb-16">
+      <div className="text-white w-[90vw] flex items-center mt-6 pb-10 gap-4 border-b-2 sm:gap-14 sm:pl-10 sm:mt-14 sm:pb-16 sm:w-[85vw]">
         <img
-          className="w-[100px] h-[100px]  rounded-full sm:w-[200px] sm:h-[200px] "
+          className="w-[100px] h-[100px] rounded-full sm:w-[200px] sm:h-[200px] "
           src={avatar_url}
           alt={login}
         />
         <div className="flex flex-col gap-[7px] sm:gap-[20px]">
           <h2 className="text-base sm:text-3xl">{login}</h2>
-          <div className="flex gap-4 text-[10px] sm:text-xl sm:gap-10">
-            <p className="flex flex-col text-center sm:gap-2 sm:flex-row">{`${repos.length}`} <span>Repositórios</span></p>
-            <p className="flex flex-col text-center sm:gap-2 sm:flex-row">{`${followers}`} <span> Seguidores</span></p>
-            <p className="flex flex-col text-center sm:gap-2 sm:flex-row">{`${following}`}<span>Seguindo</span></p>
+          <div className="flex gap-4 text-[12px] sm:text-xl sm:gap-10">
+            <p className="flex flex-col text-center font-extrabold sm:gap-2 sm:flex-row">{`${repos.length}`} <span className="font-semibold">Repositórios</span></p>
+            <p className="flex flex-col text-center font-extrabold sm:gap-2 sm:flex-row">{`${followers}`} <span className="font-semibold"> Seguidores</span></p>
+            <p className="flex flex-col text-center font-extrabold sm:gap-2 sm:flex-row">{`${following}`}<span className="font-semibold">Seguindo</span></p>
           </div>
           <div>
-            <p className="text-[10px] text-justify max-w-[600px] sm:text-xl">{bio}</p>
+            <p className="text-[10px] text-justify max-w-[250px] sm:max-w-[600px] sm:text-xl">{bio}</p>
           </div>
           {location && (
             <p className="flex items-center gap-2">

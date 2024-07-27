@@ -42,7 +42,7 @@ const RepoCard = ({ repo, login }: RepoCardProps) => {
   return (
     <div
       key={repo.id}
-      className="w-[170px] h-[200px] flex flex-col items-center justify-around bg-white rounded-[15px] sm:w-[370px] sm:h-[370px]"
+      className="w-[190px] h-[200px] flex flex-col items-center justify-around bg-white rounded-[15px] sm:w-[370px] sm:h-[370px]"
     >
       <h3 className="text-[10px] font-bold sm:text-xl">{repo.name}</h3>
       <p className="max-w-[150px] text-[10px] text-center font-semibold opacity-[.7] sm:text-xl sm:max-w-[300px]">
@@ -50,11 +50,11 @@ const RepoCard = ({ repo, login }: RepoCardProps) => {
           ? repo.description
           : "Este repositório não possui descrição."}
       </p>
-      <div className="w-[85%] flex gap-10 items-center justify-between">
-        <div className="flex gap-[6px] ">
+      <div className="w-[85%] flex items-center justify-between">
+        <div className="flex gap-[4px] sm:gap-[6px] ">
           {Object.keys(languages).map((lang) => (
             <img
-            className="w-[15px] h-[15px] sm:w-[38px] sm:h-[38px]"
+            className="w-[20px] h-[20px] sm:w-[38px] sm:h-[38px]"
               key={lang}
               src={getIconSrc(lang)}
               alt={`${repo.language} Icon`}
@@ -62,7 +62,7 @@ const RepoCard = ({ repo, login }: RepoCardProps) => {
           ))}
         </div>
         <a
-          className="w-12 bg-[#03A64A] p-2 flex items-center justify-center rounded-[15px] sm:w-20"
+          className="w-10 h-6 bg-[#03A64A] p-2 flex items-center justify-center rounded-[15px] sm:w-20 sm:h-auto"
           href={`https://github.com/${login}/${repo.name}`}
           target="_blank"
           rel="noopener noreferrer"
