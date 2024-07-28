@@ -39,6 +39,9 @@ const RepoCard = ({ repo, login }: RepoCardProps) => {
     }
   };
   
+  const handleImageError = (event: React.SyntheticEvent<HTMLImageElement, Event>) => {
+    event.currentTarget.src = "https://cdn.simpleicons.org/htmx"; // Coloque a URL da imagem padrão aqui
+  };
 
   const languagensKeys = Object.keys(languages);
   const languagensAmostra = languagensKeys.slice(0, 4);
@@ -49,8 +52,8 @@ const RepoCard = ({ repo, login }: RepoCardProps) => {
       key={repo.id}
       className="w-[150px] h-[180px] flex flex-col items-center justify-around bg-white rounded-[15px] sm:w-[370px] sm:h-[370px]"
     >
-      <h3 className="text-[9px] font-bold sm:text-xl">{repo.name}</h3>
-      <p className="max-w-[120px] text-[9px] text-center font-semibold opacity-[.7] sm:text-xl sm:max-w-[300px]">
+      <h3 className="text-[9px] font-bold sm:text-lg">{repo.name}</h3>
+      <p className="max-w-[120px] text-[9px] text-center font-semibold opacity-[.7] sm:text-base sm:max-w-[345px]">
         {repo.description
           ? repo.description
           : "Este repositório não possui descrição."}
@@ -63,6 +66,7 @@ const RepoCard = ({ repo, login }: RepoCardProps) => {
               key={lang}
               src={getIconSrc(lang)}
               alt={`${lang} Icon`}
+              onError={handleImageError}
             />
           ))}
           {linguagensRes > 0 && (
